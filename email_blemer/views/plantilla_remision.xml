@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="blemer_remision_email_template" model="mail.template">
+            <field name="name">Remision Template</field>
+            <field name="email_from">"${object.create_uid.name|safe}" &lt;${(object.create_uid.email or user.email)|safe}&gt;</field>
+            <field name="subject">Remisión ${object.name|safe}</field>
+            <field name="email_to">${object.x_blemer_cliente.email|safe},${object.x_blemer_proveedor.email|safe}</field>
+            <field name="reply_to">catchall@soluciones4g.com</field>
+            <field name="model_id" ref="ventas_blemer.model_blemer_remisiones"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html">
+                <![CDATA[
+            <p><strong>Estimado: ${object.x_blemer_cliente.name} </strong></p>
+            
+            
+            <p>  Le informamos que debe acudir a las instalaciones de <strong>${object.x_blemer_proveedor.name}</strong>,</p>
+            <p>para recolectar los siguientes desechos.</p>
+            <br>
+            <table width="70%" cellspacing="2" cellpadding="0" border="0" align="center">
+                <tr style="background-color:#8B5A78;">
+                    <th colspan="3" style="color:white; font-size:20px;">Remisión ${object.name}</th>
+                </tr>
+                <tr style="background-color:lightgray;">
+                    <th class="text-right">Producto</th>
+                    <th class="text-right">Cantidad</th>
+                    <th class="text-right">Unidad de medida</th>                    
+                </tr>
+                % for row in object.x_blemer_remision_lines:
+                    <tr>
+                        <th style="text-align: left;">${row.name.name}</th>
+                        <th>${row.x_cantidad_line}</th>
+                        <th>${row.name.uom_id.name}</th>                    
+                    </tr>
+                % endfor
+            </table>
+            <p>Saludos</p>
+            
+            <br>
+            <p><strong>${object.create_uid.company_id.name}</strong></p>
+        ]]>
+            </field>
+        </record>
+    </data>
+</odoo>

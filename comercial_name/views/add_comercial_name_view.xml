@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="add_comercial_name_view" model="ir.ui.view">
+			<field name="name">res.partner_add_comercial_name.inherited</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"></field>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='vat']" position="after" domain="[('customer','=',True)]">
+					<field name="x_blemer_comercial_name" placeholder="Nombre comercial" domain="[('customer','=',True)]"></field>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>
