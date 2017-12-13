@@ -8,8 +8,9 @@
 				<form string="Ventas" class="">
 					<header>
 						<!-- Workflow buttons -->
+						<!-- <button name="generar_seguidores" type="object" string="Agregar seguidores" states="first"></button> -->
                         <button name="asignar_borrador"
-                             type="object" string="Borrador" states="done,confirmed"/>
+                             type="object" string="Borrador" states="confirmed"/>
                         <button name="asignar_confirmado"
                              type="object" string="Confirmar" class="oe_highlight" states="draft"/>
                         <button name="generar_orden_venta" type="object" string="Generar venta" class="oe_highlight" states="confirmed"></button>
@@ -17,19 +18,19 @@
                     </header>
 					<sheet>
 						<!-- Datos generales-->
-						<group class="row" string="Datos generales">
+						<group class="row">
 							<div class="col-md-12">
 								<!-- Dato remision -->
 								<label for="name"></label>
 								<field name="name"></field>
 								<br/>
 								<!-- Proveedor -->
-								<label for="x_blemer_proveedor"></label>
-								<field name="x_blemer_proveedor" domain="[('supplier', '=', True)]"></field>
+								<label for="x_blemer_proveedor" ></label>
+								<field name="x_blemer_proveedor" domain="[('supplier', '=', True)]" options="{'no_create': True, 'no_open': True}"></field>
 								<br/>
 								<!-- Cliente -->
 								<label for="x_blemer_cliente"></label>
-								<field name="x_blemer_cliente" domain="[('customer', '=', True)]"></field>
+								<field name="x_blemer_cliente" domain="[('customer', '=', True)]" options="{'no_create': True, 'no_open': True}"></field>
 							</div>
 							<div class="col-md-12">
 								<!-- Datos remisión -->
@@ -37,10 +38,19 @@
 								<field name="x_blemer_fecha_remision"></field>
 								<br/>
 								<label for="x_blemer_vehiculos"></label>
-								<field name="x_blemer_vehiculos" string="Vehículo" domain="[('x_blemer_cliente_vehiculo', '=', x_blemer_cliente)]" />
+								<field name="x_blemer_vehiculos" string="Vehículo" options="{'no_create': True, 'no_open': True}" domain="[('x_blemer_cliente_vehiculo', '=', x_blemer_cliente)]"/>
 								<br/>
 								<label for="x_blemer_vehiculo_conductor"></label>
 								<field name="x_blemer_vehiculo_conductor"></field>
+								<br/>
+								<label for="x_blemer_entrego"></label>
+								<field name="x_blemer_entrego"></field>
+								<br/>
+								<label for="x_blemer_quien_elaboro"></label>
+								<field name="x_blemer_quien_elaboro" domain="[('category_id','=', 1)]" options="{'no_create': True, 'no_open': True}"></field>
+								<br/>
+								<label for="x_blemer_aprobo"></label>
+								<field name="x_blemer_aprobo"></field>
 							</div>
 						</group>
 
@@ -48,9 +58,9 @@
 						<group class="row">
 							<notebook>
 								<page string="Productos">
-									<field name="x_blemer_remision_lines" mode="tree,kanban">
+									<field name="x_blemer_remision_lines" mode="tree,kanban" context="{'x_parent_id': x_blemer_proveedor}">
 										<tree editable="bottom">
-											<field name="name"></field>
+											<field name="name" options="{'no_create': True, 'no_open': True}" ></field>
 											<field name="x_cantidad_line"></field>
 											<field name="x_unidad_de_medida"></field>
 											<field name="x_remision_id" invisible="1"></field>

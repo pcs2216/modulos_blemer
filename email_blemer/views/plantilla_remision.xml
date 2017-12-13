@@ -3,12 +3,15 @@
     <data noupdate="1">
         <record id="blemer_remision_email_template" model="mail.template">
             <field name="name">Remision Template</field>
-            <field name="email_from">"${object.create_uid.name|safe}" &lt;${(object.create_uid.email or user.email)|safe}&gt;</field>
+            <field name="email_from">"${user.name|safe}" &lt;${(user.email or '')|safe}&gt;</field>
             <field name="subject">Remisión ${object.name|safe}</field>
             <field name="email_to">${object.x_blemer_cliente.email|safe},${object.x_blemer_proveedor.email|safe}</field>
-            <field name="reply_to">catchall@soluciones4g.com</field>
+            <!--field name="reply_to">"${user.name|safe}" &lt;${(user.email or '')|safe}&gt;</field-->
+            <field name="reply_to">BLEMER &lt; catchall@soluciones4g.com &gt;</field>
             <field name="model_id" ref="ventas_blemer.model_blemer_remisiones"/>
             <field name="auto_delete" eval="False"/>
+            <field name="report_template" ref="email_blemer.report_blemer_remisiones"/>
+            <field name="report_name">Remisión PDF</field>
             <field name="body_html">
                 <![CDATA[
             <p><strong>Estimado: ${object.x_blemer_cliente.name} </strong></p>

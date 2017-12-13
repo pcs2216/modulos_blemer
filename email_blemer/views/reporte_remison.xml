@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <report id="report_blemer_remisiones" model="blemer.remisiones" string="Blemer Remisión" name="email_blemer.report_remisiones_view" file="email_blemer.report_blemer_remisiones" report_type="qweb-pdf" />
+    <template id="report_remisiones_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Remisión                                                                                                                                                                                                                                                                                                                     
+                            <t t-esc="doc.name"/>
+                        </h2>
+                        <table width="90%" cellspacing="2" cellpadding="0" border="0" align="center">
+                            <tr>
+                                <th width="50%">
+                                    <h4>Proveedor:                                                                                                                                                                                                                                             
+                                        <span t-field="doc.x_blemer_proveedor" />
+                                    </h4>
+                                </th>
+                                <th width="40%">
+                                    <h4>Fecha de remisión:                                                                                                                                                                                                                                             
+                                        <span t-field="doc.x_blemer_fecha_remision" />
+                                    </h4>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <h4>Cliente:                                                                                                                                                                                                                                            
+                                        <span t-field="doc.x_blemer_cliente" />
+                                    </h4>
+                                </th>
+                                <th>
+                                    <h4>Placas:                                                                                                                                                                                                                                             
+                                        <span t-field="doc.x_blemer_vehiculos" />
+                                    </h4>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <h4>Elaboró:                                                                                                                                                                                                                                             
+                                        <span t-field="doc.x_blemer_quien_elaboro" />
+                                    </h4>
+                                </th>
+                                <th>
+                                    <h4>Conductor:                                                                                                                                                                                                                                             
+                                        <span t-field="doc.x_blemer_vehiculo_conductor" />
+                                    </h4>
+                                </th>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table width="70%" cellspacing="2" cellpadding="0" border="1" align="center">
+                            <tr style="background-color:#8B5A78; ">
+                                <th colspan="3" style="color:white; font-size:20px; text-align: center;">Remisión                                                                                                                                                                                                                                                                                                                                    
+                                    <t t-esc="doc.name"/>
+                                </th>
+                            </tr>
+                            <tr style="background-color:lightgray; ">
+                                <th width="40%" class="text-center">Producto</th>
+                                <th width="10%" class="text-center">Cantidad</th>
+                                <th width="20%" class="text-center">Unidad de medida</th>
+                            </tr>
+                            <t t-foreach="doc.x_blemer_remision_lines" t-as="line">
+                                <tr>
+                                    <th style="text-align: left;" t-field="line.name"/>
+                                    <th style="text-align: center;" t-field="line.x_cantidad_line"/>
+                                    <th style="text-align: center;" t-field="line.name.uom_id"/>
+                                </tr>
+                            </t>
+                        </table>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <table border="0" style="border-collapse:collapse;color:000000;width:100%" cellpadding="3" cellspacing="3">
+                            <tr>
+                                <td class="text-center">________________________</td>
+                                <td class="text-center">________________________</td>
+                            </tr>
+                            <tr >
+                                <td class="text-center">
+                                    <strong>Aprobó</strong>
+                                    <h5><span t-field="doc.x_blemer_aprobo" /></h5>
+                                </td>
+                                <td class="text-center">
+                                    <strong>Entregó</strong>
+                                    <h5><span t-field="doc.x_blemer_entrego" /></h5>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>     

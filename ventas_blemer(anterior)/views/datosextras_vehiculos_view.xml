@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="datos_extras_vehiculos">
+			<field name="name">fleet.vehicle_datos_extra.inherited</field>
+			<field name="model">fleet.vehicle</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_view_form"></field>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='model_year']" position="after">
+					<field name="x_blemer_cliente_vehiculo" domain="[('customer', '=', True)]"></field>
+				</xpath>
+				<xpath expr="//field[@name='model_year']" position="after">
+					<field name="x_blemer_tipo_vehiculo"></field>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

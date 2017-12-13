@@ -13,18 +13,20 @@
     'author': "Soluciones4g",
     'website': "http://www.soluciones4g.com",
 
+    # Categories can be used to filter modules in modules listing
+    # for the full list
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base', 'product', 'stock', 'sale', 'mail', 'fleet'],
+    # any module necessary for this one to work correctly
+    'depends': ['base','product','stock','sale','mail','fleet'],
 
+    # always loaded
     'data': [
         'views/definicion_remisiones_view.xml',
         'views/datosextras_vehiculos_view.xml',
         'views/datosextras_clientes_view.xml',
-        #'views/plantilla_remision.xml',
-        #'views/remision_vista.xml',
     ],
-    'installable': True,
-    'auto_install': False,
+    'installable':True,
+    'auto_install':False,
 }

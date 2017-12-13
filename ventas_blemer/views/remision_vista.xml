@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="ventas_blemer.blemer_ventas_form_view"></field>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='state']" position="before">
-                    <button  name = "send_mail_template_1"  string = "Enviar correo electrónico "  type = "object" confirm="¿Enviar correo electrónico? " attrs="{'invisible': [('state','in',('draft'))]   }" />
+                    <button  name = "send_mail_template_1"  string = "Enviar correo electrónico "  type = "object"    confirm="¿Enviar correo electrónico? " />
                 </xpath>
             </field>
         </record>

@@ -19,12 +19,14 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'stock', 'sale', 'mail', 'fleet', 'ventas_blemer'],
+    'depends': ['base','mail', 'ventas_blemer'],
 
     # always loaded
     'data': [
+        'views/reporte_remison.xml',
         'views/plantilla_remision.xml',
         'views/remision_vista.xml',
+        #'views/blemer_automated_action.xml',        
         #'views/definicion_remisiones_view.xml',
     ],
     'installable': True,
