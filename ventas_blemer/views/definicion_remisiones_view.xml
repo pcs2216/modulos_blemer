@@ -9,13 +9,11 @@
 					<header>
 						<!-- Workflow buttons -->
 						<!-- <button name="generar_seguidores" type="object" string="Agregar seguidores" states="first"></button> -->
-                        <button name="asignar_borrador"
-                             type="object" string="Borrador" states="confirmed"/>
-                        <button name="asignar_confirmado"
-                             type="object" string="Confirmar" class="oe_highlight" states="draft"/>
-                        <button name="generar_orden_venta" type="object" string="Generar venta" class="oe_highlight" states="confirmed"></button>
-                        <field name="state" widget="statusbar" statusbar_colors='{"borrados":"red","hecho":"blue"}'/>
-                    </header>
+						<button name="asignar_borrador" type="object" string="Borrador" states="confirmed"/>
+						<button name="asignar_confirmado" type="object" string="Confirmar" class="oe_highlight" states="draft"/>
+						<button name="generar_orden_venta" type="object" string="Generar venta" class="oe_highlight" states="confirmed"></button>
+						<field name="state" widget="statusbar" statusbar_colors='{"borrados":"red","hecho":"blue"}'/>
+					</header>
 					<sheet>
 						<!-- Datos generales-->
 						<group class="row">
@@ -25,8 +23,8 @@
 								<field name="name"></field>
 								<br/>
 								<!-- Proveedor -->
-								<label for="x_blemer_proveedor" ></label>
-								<field name="x_blemer_proveedor" domain="[('supplier', '=', True)]" options="{'no_create': True, 'no_open': True}"></field>
+								<label for="x_blemer_proveedor"></label>
+								<field name="x_blemer_proveedor" domain="['&amp;',('supplier', '=', True),('is_company','=',0)]" options="{'no_create': True, 'no_open': True}"></field>
 								<br/>
 								<!-- Cliente -->
 								<label for="x_blemer_cliente"></label>
@@ -47,38 +45,37 @@
 								<field name="x_blemer_entrego"></field>
 								<br/>
 								<label for="x_blemer_quien_elaboro"></label>
-								<field name="x_blemer_quien_elaboro" domain="[('category_id','=', 1)]" options="{'no_create': True, 'no_open': True}"></field>
+								<field name="x_blemer_quien_elaboro" domain="[('parent_id','=', x_blemer_proveedor)]" options="{'no_create': True, 'no_open': True}"></field>
 								<br/>
 								<label for="x_blemer_aprobo"></label>
 								<field name="x_blemer_aprobo"></field>
 							</div>
 						</group>
-
 						<!-- Productos de venta -->
 						<group class="row">
 							<notebook>
 								<page string="Productos">
 									<field name="x_blemer_remision_lines" mode="tree,kanban" context="{'x_parent_id': x_blemer_proveedor}">
 										<tree editable="bottom">
-											<field name="name" options="{'no_create': True, 'no_open': True}" ></field>
+											<field name="name" options="{'no_create': True, 'no_open': True}"></field>
 											<field name="x_cantidad_line"></field>
 											<field name="x_unidad_de_medida"></field>
+											<field name="x_parent_id" invisible="1"/>
 											<field name="x_remision_id" invisible="1"></field>
 										</tree>
 									</field>
 								</page>
 							</notebook>
-						</group>						
+						</group>
 					</sheet>
 					<!-- Chatter de seguimiento -->
 					<div class="oe_chatter">
-				      	<field name="message_follower_ids" widget="mail_followers"/>
-				       	<field name="message_ids" widget="mail_thread"/>
-				    </div>
+						<field name="message_follower_ids" widget="mail_followers"/>
+						<field name="message_ids" widget="mail_thread"/>
+					</div>
 				</form>
 			</field>
 		</record>
-
 		<record model="ir.ui.view" id="blemer_ventas_tree_view">
 			<field name="name">blemer.remisiones.tree,view</field>
 			<field name="model">blemer.remisiones</field>
@@ -90,14 +87,12 @@
 				</tree>
 			</field>
 		</record>
-
 		<record model="ir.actions.act_window" id="blemer_ventas_action">
 			<field name="name">Remisiones</field>
 			<field name="res_model">blemer.remisiones</field>
 			<field name="view_type">form</field>
 			<field name="view_form">tree,form</field>
 		</record>
-
 		<menuitem id="blemer_ventas_item" name="Remisiones" action="blemer_ventas_action" parent="sale.sale_menu_root"></menuitem>
 	</data>
 </odoo>

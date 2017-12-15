@@ -10,7 +10,7 @@ class Datos_ventas(models.Model):
 	x_blemer_cliente = fields.Many2one('res.partner', "Cliente: ", required=True)
 	x_blemer_proveedor = fields.Many2one('res.partner', "Proveedor: ", required=True)
 	x_blemer_remision_lines = fields.One2many('blemer.remisiones.lines', 'x_remision_id', string="Productos", required=True)
-	x_blemer_fecha_remision = fields.Datetime("Fecha y hora: ", required=True)
+	x_blemer_fecha_remision = fields.Datetime("Fecha y hora: ", required=True,default=fields.Datetime.now)
 	x_blemer_vehiculos = fields.Many2one('fleet.vehicle', string="Placas: ", required=True)
 	x_blemer_vehiculo_conductor = fields.Char("Conductor: ", required=True)
 	x_blemer_entrego = fields.Char(string="Entregó: ", required=True)
@@ -101,3 +101,10 @@ class Datos_ventas(models.Model):
 		self.state = 'done'
 
 		return res, res_line
+	
+	
+	@api.onchange('x_blemer_proveedor')
+	def onchange_x_proveedor (self):
+		print("*************************it's working")
+		self.x_blemer_quien_elaboro=''
+		self.x_blemer_remision_lines=[]

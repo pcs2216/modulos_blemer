@@ -6,16 +6,15 @@ class Remisiones_lines(models.Model):
 	_name = 'blemer.remisiones.lines'
 
 	
-	x_parent_id = fields.Many2one('res.partner',ondelete='set null')
+	x_parent_id = fields.Many2one('res.partner',ondelete='set null', default= lambda  self: self.env.context.get('x_parent_id'))
 	
-	name = fields.Many2one('product.product', string="Producto", required=True)
-	#domain="[('seller_ids.name.name', '=', self.env.context.get('x_parent_id'))]")
+	name = fields.Many2one('product.product', string="Producto", required=True, domain="[('seller_ids.name.id', '=', x_parent_id)]")
 	x_cantidad_line = fields.Float("Cantidad", required=True, default=1.00)
 	x_unidad_de_medida = fields.Many2one(
 	    'product.uom', string="Unidad de medida", related='name.uom_id', readonly=True)
 	x_remision_id = fields.Many2one('blemer.remisiones')
 	
-	@api.onchange('x_unidad_de_medida')
+	"""@api.onchange('x_unidad_de_medida')
 	def _onchange_project_ids(self):
 		domain = {}
 		product_list = []
@@ -25,8 +24,4 @@ class Remisiones_lines(models.Model):
 			product_list.append(partner_ids.id)
 			# to assign parter_list value in domain
 		domain = {'name': [('id', '=', product_list)]}
-		return {'domain': domain}
-
-
-class remisiones_tested(models.Model):
-	_inherit = 'blemer.remisiones'
+		return {'domain': domain}"""
