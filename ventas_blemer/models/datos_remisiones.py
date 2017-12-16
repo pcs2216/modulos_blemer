@@ -15,7 +15,9 @@ class Datos_ventas(models.Model):
 	x_blemer_vehiculo_conductor = fields.Char("Conductor: ", required=True)
 	x_blemer_entrego = fields.Char(string="Entregó: ", required=True)
 	x_blemer_quien_elaboro = fields.Many2one('res.partner', string="Quien Elaboró: ", required=True)
-	x_blemer_aprobo = fields.Char(string="Aprobó", required=True)
+	x_blemer_aprobo = fields.Char(string="Aprobó: ", required=True)	
+	x_blemer_bascula = fields.Char(string='Ticket de báscula: ')
+	
 
 	state = fields.Selection([
          ('draft', 'Borrador'),

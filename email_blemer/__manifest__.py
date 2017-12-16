@@ -24,6 +24,7 @@
     # always loaded
     'data': [
         'views/reporte_remison.xml',
+        #'views/reporte_remison2.xml',
         'views/plantilla_remision.xml',
         'views/remision_vista.xml',
         #'views/blemer_automated_action.xml',        

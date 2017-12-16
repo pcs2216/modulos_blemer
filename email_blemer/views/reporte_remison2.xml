@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <report id="report_blemer_remisiones" model="blemer.remisiones" string="Blemer Remisión" name="email_blemer.report_remisiones_view" file="email_blemer.report_blemer_remisiones" report_type="qweb-pdf" />
-    <template id="report_remisiones_view">
+    <report id="report_blemer_remisiones_logos" model="blemer.remisiones" string="Blemer Remisión con logos" name="email_blemer.report_remisiones_view_2" file="email_blemer.report_blemer_remisiones_logos" report_type="qweb-pdf" />
+    <template id="report_remisiones_view_2">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
