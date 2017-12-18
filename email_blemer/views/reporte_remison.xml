@@ -24,7 +24,7 @@
                         <table width="90%" cellspacing="2" cellpadding="0" border="0" align="center">
                             <tr>
                                 <th width="50%">
-                                    <h5>Proveedor:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+                                    <h5>Cedis / Planta:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                                         <span t-field="doc.x_blemer_proveedor" />
                                     </h5>
                                 </th>
