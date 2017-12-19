@@ -52,6 +52,9 @@
 								<br/>
 								<label for="x_blemer_bascula"></label>
 								<field name="x_blemer_bascula"></field>
+								<br/>
+								<label for="x_blemer_saleOrder"></label>
+								<field name="x_blemer_saleOrder"></field>
 							</div>
 						</group>
 						<!-- Productos de venta -->

@@ -22,6 +22,7 @@
         'views/definicion_remisiones_view.xml',
         'views/datosextras_vehiculos_view.xml',
         'views/datosextras_clientes_view.xml',
+        'views/sale_order_inherit.xml',
         #'views/plantilla_remision.xml',
         #'views/remision_vista.xml',
     ],
