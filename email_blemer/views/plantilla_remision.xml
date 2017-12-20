@@ -9,6 +9,7 @@
             <!--field name="reply_to">"${user.name|safe}" &lt;${(user.email or '')|safe}&gt;</field-->
             <field name="reply_to">BLEMER &lt; catchall@soluciones4g.com &gt;</field>
             <field name="model_id" ref="ventas_blemer.model_blemer_remisiones"/>
+            <field name="lang">${object.x_blemer_cliente.lang}</field>
             <field name="auto_delete" eval="False"/>
             <field name="report_template" ref="email_blemer.report_blemer_remisiones"/>
             <field name="report_name">Remisión PDF</field>
