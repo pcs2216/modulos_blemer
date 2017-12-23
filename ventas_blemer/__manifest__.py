@@ -16,7 +16,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base', 'product', 'stock', 'sale', 'mail', 'fleet'],
+    'depends': ['base', 'product', 'stock', 'sale', 'mail', 'fleet','purchase'],
 
     'data': [
         'views/definicion_remisiones_view.xml',

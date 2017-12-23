@@ -11,7 +11,8 @@
 						<!-- <button name="generar_seguidores" type="object" string="Agregar seguidores" states="first"></button> -->
 						<button name="asignar_borrador" type="object" string="Borrador" states="confirmed"/>
 						<button name="asignar_confirmado" type="object" string="Confirmar" class="oe_highlight" states="draft"/>
-						<button name="generar_orden_venta" type="object" string="Generar venta" class="oe_highlight" states="confirmed"></button>
+						<button name="generar_orden_venta" type="object" string="Generar venta" class="oe_highlight"  attrs="{'invisible':['|',('x_blemer_cliente','in',[1]),('state','not in','confirmed')] }"></button>
+						<button name="generar_orden_compra" type="object" string="Generar Compra" class="oe_highlight" attrs="{'invisible':['|',('x_blemer_cliente','not in',[1]),('state','not in','confirmed')] }"></button>
 						<field name="state" widget="statusbar" statusbar_colors='{"borrados":"red","hecho":"blue"}'/>
 					</header>
 					<sheet>
@@ -53,8 +54,11 @@
 								<label for="x_blemer_bascula"></label>
 								<field name="x_blemer_bascula"></field>
 								<br/>
-								<label for="x_blemer_saleOrder"></label>
-								<field name="x_blemer_saleOrder"></field>
+								<label for="x_blemer_saleOrder" attrs="{ 'invisible':[('x_blemer_cliente','in',[1])] }"></label>
+								<field name="x_blemer_saleOrder" attrs="{ 'invisible':[('x_blemer_cliente','in',[1])] }"></field>
+								<br/>
+								<label for="x_blemer_purchaseOrder" attrs="{ 'invisible':[('x_blemer_cliente','not in',[1])] }"></label>
+								<field name="x_blemer_purchaseOrder" attrs="{ 'invisible':[('x_blemer_cliente','not in',[1])] }"></field>
 							</div>
 						</group>
 						<!-- Productos de venta -->
