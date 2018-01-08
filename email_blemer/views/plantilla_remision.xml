@@ -4,7 +4,7 @@
         <record id="blemer_remision_email_template" model="mail.template">
             <field name="name">Remision Template</field>
             <field name="email_from">"${user.name|safe}" &lt;${(user.email or '')|safe}&gt;</field>
-            <field name="subject">Remisión ${object.name|safe}</field>
+            <field name="subject">Aviso de recolección ${object.name|safe}</field>
             <field name="email_to">${object.x_blemer_cliente.email|safe},${object.x_blemer_proveedor.email|safe}</field>
             <!--field name="reply_to">"${user.name|safe}" &lt;${(user.email or '')|safe}&gt;</field-->
             <field name="reply_to">BLEMER &lt; catchall@soluciones4g.com &gt;</field>
@@ -12,7 +12,7 @@
             <field name="lang">${object.x_blemer_cliente.lang}</field>
             <field name="auto_delete" eval="False"/>
             <field name="report_template" ref="email_blemer.report_blemer_remisiones"/>
-            <field name="report_name">Remisión PDF</field>
+            <field name="report_name">Nota de Remisión PDF</field>
             <field name="body_html">
                 <![CDATA[
             <p><strong>Estimado: ${object.x_blemer_cliente.name} </strong></p>
@@ -23,7 +23,7 @@
             <br>
             <table width="70%" cellspacing="2" cellpadding="0" border="0" align="center">
                 <tr style="background-color:#8B5A78;">
-                    <th colspan="3" style="color:white; font-size:20px;">Remisión ${object.name}</th>
+                    <th colspan="3" style="color:white; font-size:20px;">Nota de Remisión ${object.name}</th>
                 </tr>
                 <tr style="background-color:lightgray;">
                     <th class="text-right">Producto</th>

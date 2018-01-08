@@ -17,7 +17,7 @@
                             </div>
                         </div>
                         <div align="left">
-                            <h2>Remisión                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+                            <h2>Nota de Remisión                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                                 <t t-esc="doc.name"/>
                             </h2>
                         </div>
@@ -71,7 +71,7 @@
                         <div class="row" align="center">
                             <table width="70%" cellspacing="2" cellpadding="0" border="1" align="center">
                                 <tr style="background-color:#8B5A78; ">
-                                    <th colspan="3" style="color:white; font-size:20px; text-align: center;">Remisión                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                    <th colspan="3" style="color:white; font-size:20px; text-align: center;">Nota de Remisión                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
                                         <t t-esc="doc.name"/>
                                     </th>
                                 </tr>
