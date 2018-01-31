@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+Blemer_remisiones_supervisor,Blemer_remisiones_supervisor,ventas_blemer.model_blemer_remisiones,Seguridad_blemer.blemer_supervisor_depto,1,1,1,1
+Blemer_remisiones_all,Blemer_remisiones_all,ventas_blemer.model_blemer_remisiones,,1,0,0,0
+Blemer_remisiones_lines_supervisor,Blemer_remisiones_lines_supervisor,ventas_blemer.model_blemer_remisiones_lines,Seguridad_blemer.blemer_supervisor_depto,1,1,1,1
+Blemer_remisiones_lines_all,Blemer_remisiones_lines_all,ventas_blemer.model_blemer_remisiones_lines,,1,0,0,0
