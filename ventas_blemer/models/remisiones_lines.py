@@ -8,7 +8,7 @@ class Remisiones_lines(models.Model):
 	
 	x_parent_id = fields.Many2one('res.partner',ondelete='set null', default= lambda  self: self.env.context.get('x_parent_id'))
 	
-	name = fields.Many2one('product.product', string="Producto", required=True, domain="[('seller_ids.name.id', '=', x_parent_id)]")
+	name = fields.Many2one('product.product', string="Producto", required=True)
 	x_cantidad_line = fields.Float("Cantidad", required=True, default=1.00)
 	x_unidad_de_medida = fields.Many2one(
 	    'product.uom', string="Unidad de medida", related='name.uom_id', readonly=True)

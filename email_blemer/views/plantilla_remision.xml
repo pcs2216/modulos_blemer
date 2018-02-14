@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data noupdate="1">
+    <data >
         <record id="blemer_remision_email_template" model="mail.template">
             <field name="name">Remision Template</field>
             <field name="email_from">"${user.name|safe}" &lt;${(user.email or '')|safe}&gt;</field>
